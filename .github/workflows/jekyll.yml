@@ -23,6 +23,8 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future" 
         git clone git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target
+        git config --global user.email "brakmic.aleksandar@gmail.com"
+        git config --global user.name "Auto publisher"
         echo "cloned"
         cp -R ./_site ./target 
         echo "copied"
