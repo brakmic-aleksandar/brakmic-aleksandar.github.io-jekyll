@@ -23,7 +23,7 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll \
         && jekyll build --future" \
-        && git checkout git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target \
+        && git clone git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target \
         && copy ./_site ./target \
         && cd ./site \
         && git add . \
