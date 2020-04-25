@@ -28,7 +28,7 @@ jobs:
         echo "copied"
         cd ./_site 
         echo "cd"
-        git add target
+        git add
         echo "add"
         git commit -m "auto publish" 
         echo "commit"
