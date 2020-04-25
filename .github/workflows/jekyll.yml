@@ -24,7 +24,7 @@ jobs:
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future" 
         git clone git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target
         echo "cloned"
-        copy ./_site ./target 
+        cp -R ./_site ./target 
         echo "copied"
         cd ./site 
         echo "cd"
