@@ -11,15 +11,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+         key: ${{ secrets.SSH_PRIVATE_KEY }}
+         name: id_rsa # optional
+         known_hosts: ${{ secrets.KNOWN_HOSTS }}
     - name: Build the site in the jekyll/builder container
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll \
         && jekyll build --future" \
-        && cd ./_site \
-        && git init \
-        && chmod 777 ./git \
-        && git remote add origin git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io \
-        && git commit -m "update" \
-        && git push --set-upstream origin master --force
+        && git checkout git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target \
+        && copy ./_site ./target \
+        && cd ./site \
+        && git add . \
+        && git commit -m "auto publish" \
+        && git push
