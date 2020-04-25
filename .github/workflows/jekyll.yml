@@ -26,7 +26,7 @@ jobs:
         echo "cloned"
         cp -R ./_site ./target 
         echo "copied"
-        cd ./site 
+        cd ./_site 
         echo "cd"
         git add target
         echo "add"
