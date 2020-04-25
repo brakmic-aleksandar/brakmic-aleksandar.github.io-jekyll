@@ -26,6 +26,6 @@ jobs:
         && git clone git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target \
         && copy ./_site ./target \
         && cd ./site \
-        && git add . \
+        && git add target\
         && git commit -m "auto publish" \
         && git push
