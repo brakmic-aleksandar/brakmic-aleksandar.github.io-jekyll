@@ -21,11 +21,15 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll \
-        && jekyll build --future" \
-        && git clone git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target \
-        && copy ./_site ./target \
-        && cd ./site \
-        && git add target\
-        && git commit -m "auto publish" \
-        && git push
+        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future" 
+        git clone git@github.com:brakmic-aleksandar/brakmic-aleksandar.github.io.git target
+        echo "cloned"
+        copy ./_site ./target 
+        echo "copied"
+        cd ./site 
+        echo "cd"
+        git add target
+        echo "add"
+        git commit -m "auto publish" 
+        echo "commit"
+        git push
